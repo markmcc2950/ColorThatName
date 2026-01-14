@@ -60,7 +60,14 @@ public class GUI_Handler {
         green = (green / len);
         blue = (blue / len);
 
-        Color color = new Color(red, green, blue);
+        // Find the value closest to 255 for our RGB colors
+        int max1 = Math.max(red, green);
+        int max2 = Math.max(green, blue);
+        int max3 = Math.max(max1, max2);
+
+        int diff = (int)((255 - max3) / 2);
+
+        Color color = new Color(red + diff, green + diff, blue + diff);
 
         panel.drawNameColor(color);
 
@@ -105,6 +112,8 @@ public class GUI_Handler {
 
         content.add(controls, BorderLayout.NORTH);
         content.add(panel, BorderLayout.CENTER);
+
+        frame.setBackground(Color.DARK_GRAY);
 
         frame.pack();
 

@@ -29,32 +29,50 @@ public class DrawingPanel extends JPanel {
 
         for (float i = 0f; i < 1f; i += (1f / max)) {
             j++;
-            if (i < 0.5f) {
-                if (red - (2f * (1 / max)) >= 0f) {
-                    red = red - (2f * (1 / max));
-                }
-                else {
+            if (i < 0.25f) {
+                if (red - (4f * (1 / max)) >= 0f) {
+                    red = red - (4f * (1 / max));
+                } else {
                     red = 0f;
                 }
+            }
+            else if (i >= 0.25f && i <= 0.75f) {
+                red = 0.0f;
+            }
+            else if (i > 0.75f) {
+                if (red + (4f * (1 / max)) <= 1f) {
+                    red = red + (4f * (1 / max));
+                }
+                else {
+                    red = 1f;
+                }
 
-                if (green + (2f * (1 / max)) <= 1f) {
-                    green = green + (2f * (1 / max));
+                if (blue - (4f * (1 / max)) >= 0f) {
+                    blue = blue - (4f * (1 / max));
+                }
+                else {
+                    blue = 0f;
+                }
+            }
+            if (i >= 0.125f && i <= 0.375f) {
+                if (green + (4f * (1 / max)) <= 1f) {
+                    green = green + (4f * (1 / max));
                 }
                 else {
                     green = 1f;
                 }
             }
-            else {
-                red = 0.0f;
-                if (green - (2f * (1 / max)) >= 0f) {
-                    green = green - (2f * (1 / max));
+            else if (i > 0.375f && i <= 0.625f) {
+                if (green - (4f * (1 / max)) >= 0f) {
+                    green = green - (4f * (1 / max));
                 }
                 else {
                     green = 0f;
                 }
-
-                if (blue + (2f * (1 / max)) <= 1f) {
-                    blue = blue + (2f * (1 / max));
+            }
+            if (i > 0.5f && i <= 0.75f) {
+                if (blue + (4f * (1 / max)) <= 1f) {
+                    blue = blue + (4f * (1 / max));
                 }
                 else {
                     blue = 1f;
@@ -82,10 +100,10 @@ public class DrawingPanel extends JPanel {
         int panelHeight = getHeight();
 
         int rectWidth  = panelWidth / 5;   // or whatever size you want
-        int rectHeight = panelHeight / 15;
+        int rectHeight = panelHeight / 5;
 
         int x = (panelWidth - rectWidth) / 2;   // center horizontally
-        int y = (int)(panelHeight * 0.75);      // place below gradient
+        int y = (int)(panelHeight * 0.5);      // place below gradient
 
         g2.setColor(nameColor);               // or whatever color you want
         g2.fillRect(x, y, rectWidth, rectHeight);
