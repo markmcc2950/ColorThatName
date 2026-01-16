@@ -27,59 +27,13 @@ public class DrawingPanel extends JPanel {
         float max = 26f;
         int j = 0;
 
-        for (float i = 0f; i < 1f; i += (1f / max)) {
+        for (float i = 0f; i < max; i += 1f) {
             j++;
-            if (i < 0.25f) {
-                if (red - (4f * (1 / max)) >= 0f) {
-                    red = red - (4f * (1 / max));
-                } else {
-                    red = 0f;
-                }
-            }
-            else if (i >= 0.25f && i <= 0.75f) {
-                red = 0.0f;
-            }
-            else if (i > 0.75f) {
-                if (red + (4f * (1 / max)) <= 1f) {
-                    red = red + (4f * (1 / max));
-                }
-                else {
-                    red = 1f;
-                }
+            float hue = i / max;   // 0 → 1
+            float saturation = 1f;                   // full color
+            float brightness = 1f;
 
-                if (blue - (4f * (1 / max)) >= 0f) {
-                    blue = blue - (4f * (1 / max));
-                }
-                else {
-                    blue = 0f;
-                }
-            }
-            if (i >= 0.125f && i <= 0.375f) {
-                if (green + (4f * (1 / max)) <= 1f) {
-                    green = green + (4f * (1 / max));
-                }
-                else {
-                    green = 1f;
-                }
-            }
-            else if (i > 0.375f && i <= 0.625f) {
-                if (green - (4f * (1 / max)) >= 0f) {
-                    green = green - (4f * (1 / max));
-                }
-                else {
-                    green = 0f;
-                }
-            }
-            if (i > 0.5f && i <= 0.75f) {
-                if (blue + (4f * (1 / max)) <= 1f) {
-                    blue = blue + (4f * (1 / max));
-                }
-                else {
-                    blue = 1f;
-                }
-            }
-
-            Color rgb = new Color(red, green, blue);
+            Color rgb = Color.getHSBColor(hue, saturation, brightness);
 
             GUI_Handler.setColorMap(j, rgb);
 

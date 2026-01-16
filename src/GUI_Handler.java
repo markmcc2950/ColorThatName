@@ -65,13 +65,13 @@ public class GUI_Handler {
         int max2 = Math.max(green, blue);
         int max3 = Math.max(max1, max2);
 
-        int diff = (int)((255 - max3) / 2);
+        int diff = (int)((255 - max3) * 0.75f);
 
         Color color = new Color(red + diff, green + diff, blue + diff);
 
         panel.drawNameColor(color);
 
-        System.out.println(red + " | " + blue + " | " +  green);
+        System.out.println(str + ": " + red + " | " + blue + " | " +  green);
     }
 
     private static void frameSetup(JFrame frame) {
