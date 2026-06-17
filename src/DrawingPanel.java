@@ -4,6 +4,7 @@ import java.awt.*;
 public class DrawingPanel extends JPanel {
     private boolean drawColor = false;
     private Color nameColor = new Color(255, 255, 255);
+    private float max = 26f;
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -17,14 +18,13 @@ public class DrawingPanel extends JPanel {
         }
     }
     private void drawGradient(Graphics2D g2) {
-        int width = GUI_Handler.getWindowWidth();
-        int height = GUI_Handler.getWindowHeight();
+        int width = getWidth();
+        int height = getHeight();
 
         float red = 1.0f;
         float green = 0.0f;
         float blue = 0.0f;
 
-        float max = 26f;
         int j = 0;
 
         for (float i = 0f; i < max; i += 1f) {
@@ -39,10 +39,10 @@ public class DrawingPanel extends JPanel {
 
             g2.setColor(rgb);
             g2.fillRect(
-                    (int)((0.7 * (j * ((width) / max)))),
-                    (int)((float)(height / 10) + height / max),
+                    (int)((width * 0.01f) + i * (0.98f * width) / max),
+                    (int)(height * 0.01f),
                     (int)(width / max),
-                    (height / 10)
+                    (int)(height * 0.02f)
             );
         }
 

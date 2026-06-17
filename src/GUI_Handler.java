@@ -20,11 +20,11 @@ public class GUI_Handler {
     }
 
     public static int getWindowWidth() {
-        return screenWidth;
+        return Toolkit.getDefaultToolkit().getScreenSize().width;
     }
 
     public static int getWindowHeight() {
-        return screenHeight;
+        return Toolkit.getDefaultToolkit().getScreenSize().height;
     }
 
     public static void setColorMap(Integer x, Color color) {
